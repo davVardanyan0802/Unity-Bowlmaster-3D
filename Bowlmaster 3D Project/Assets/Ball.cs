@@ -6,13 +6,16 @@ public class Ball : MonoBehaviour
 {
     private Rigidbody rigidbody;
     private AudioSource audioSource;
-    public float laubchSpeed;
+    public Vector3 launchVelocity;
     // Start is called before the first frame update
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
-        Launch();
+        rigidbody.velocity = launchVelocity;
+
+        audioSource.Play();
+
 
     }
 
@@ -22,10 +25,5 @@ public class Ball : MonoBehaviour
 
     }
 
-    public void Launch()
-    {
-        rigidbody.velocity = new Vector3(0, 0, laubchSpeed);
 
-        audioSource.Play();
-    }
 }
