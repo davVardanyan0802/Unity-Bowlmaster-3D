@@ -11,15 +11,20 @@ public class Ball : MonoBehaviour
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
+        rigidbody.useGravity = false;
+       
+    }
+
+    public void Launch(Vector3 velocity)
+    {
+        rigidbody.useGravity = true;
         audioSource = GetComponent<AudioSource>();
         rigidbody.velocity = launchVelocity;
 
         audioSource.Play();
-
-
     }
 
-    // Update is called once per frame
+
     void Update()
     {
 
