@@ -7,6 +7,7 @@ public class PinSetter : MonoBehaviour
 {
 
     public Text standingDisplay;
+    private bool ballEnteredBox = false;
 
     void Start()
     {
@@ -31,5 +32,28 @@ public class PinSetter : MonoBehaviour
 
         }
         return standing;
+    }
+
+    void OnTriggerEnter(Collider collider)
+    {
+        GameObject thingHit = collider.gameObject;
+
+        if (thingHit.GetComponent<Ball>())
+        {
+            ballEnteredBox = true;
+            standingDisplay.color = Color.red;
+
+        }
+
+    }
+
+    void OnTriggerExit(Collider collider1)
+    {
+        GameObject thingLeft = collider1.gameObject;
+        if (thingLeft.GetComponent<Pin>())
+        {
+            Destroy(thingLeft);
+        }
+
     }
 }
